@@ -1,0 +1,37 @@
+{% extends 'admin/change_form.html' %}
+{% load static %}
+
+{% block admin_change_form_document_ready %}
+{{ block.super }}
+<script>
+    (function($) {
+    $('#id_sd').on('click', function(){
+        if($('#id_sd').prop('checked') == true) {
+            $('#id_sd_values_max').prop('disabled', false)
+            $('#id_sd_values_max').val('')
+        } else {
+            $('#id_sd_values_max').prop('disabled', true)
+            $('#id_sd_values_max').val('')
+            $('#id_sd_values_max').css('background', 'lightgray')
+        }
+    })
+})(django.jQuery);
+
+    (function($) {
+    $('#id_unstandart_resolution').on('click', function() {
+        if($('#id_unstandart_resolution').prop('checked') == true) {
+            $('#id_resolution').prop('disabled', true)
+            $('#id_resolution').val('')
+            $('#id_input_resolution').prop('disabled', false)
+            $('#id_input_resolution').css('background', 'white')
+        } else {
+            $('#id_resolution').prop('disabled', false)
+            $('#id_input_resolution').val('')
+            $('#id_input_resolution').prop('disabled', true)
+            $('#id_input_resolution').css('background', 'lightgrey')
+        }
+    })
+})(django.jQuery);
+
+</script>
+{% endblock %}
